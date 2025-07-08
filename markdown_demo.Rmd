@@ -1,0 +1,32 @@
+---
+title: "Untitled"
+output: html_document
+date: "2025-07-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(reproducibleRchunks)
+library(renv)
+library(sentimentr)
+
+```
+## How to use reproducibleRchunks together with renv
+
+```{r eval=FALSE}
+renv::init()
+```
+
+```{r eval=FALSE}
+renv::snapshot()
+```
+
+Add renv.lock and directory 'renv/' to git, commit and push.
+
+## Sentiment Analysis
+
+```{reproducibleR txtsentiment}
+txt <- "Hi there! How are you? I am fine! The weather is bad! I don't like it."
+snt <- sentimentr::sentiment(txt)
+```
