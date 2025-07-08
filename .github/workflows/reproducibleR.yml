@@ -13,7 +13,9 @@ jobs:
     container:
       image: rocker/verse:latest  # Contains R + RStudio + tidyverse + rmarkdown
     steps:
-      - uses: actions/checkout@v3
+      - name: Delete possibly corrupted renv library
+        run: rm -rf renv/library
+      - uses: actions/checkout@v4
       - name: Check if last commit was from github-actions bot
         run: |
           git config --global --add safe.directory /__w/reproducibleRchunks-renv-demo/reproducibleRchunks-renv-demo
