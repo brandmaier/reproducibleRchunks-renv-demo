@@ -28,7 +28,7 @@ jobs:
         run: |
           Rscript - <<'EOF'
           library(reproducibleRchunks)
-          renv::restore()
+          renv::restore(confirm=FALSE)
           files <- list.files(pattern = '\\.[Rr]md$', recursive = TRUE)
           success <- all(sapply(files, isReproducible))
           if (success) {
