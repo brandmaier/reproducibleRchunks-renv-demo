@@ -8,8 +8,7 @@ date: "2025-07-08"
 knitr::opts_chunk$set(echo = TRUE)
 
 library(reproducibleRchunks)
-library(renv)
-library(sentimentr)
+library(MASS)
 
 ```
 ## How to use reproducibleRchunks together with renv
@@ -26,7 +25,7 @@ Add renv.lock and directory 'renv/' to git, commit and push.
 
 ## Sentiment Analysis
 
-```{reproducibleR txtsentiment}
+```{reproducibleR mvr}
 txt <- "Hi there! How are you? I am fine! The weather is bad! I don't like it."
-snt <- sentimentr::sentiment(txt)
+snt <- MASS::mvrnorm(n=100, mu=0,Sigma=1)
 ```

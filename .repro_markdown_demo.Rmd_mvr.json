@@ -14,7 +14,7 @@
         "names": {
           "type": "character",
           "attributes": {},
-          "value": ["hashing", "hashing_algorithm", "hashing_package", "hashing_package_version", "digits", "R_version", "packages", "code_fingerprint"]
+          "value": ["hashing", "hashing_algorithm", "hashing_package", "hashing_package_version", "digits", "R_version", "code_fingerprint"]
         }
       },
       "value": [
@@ -149,19 +149,8 @@
         },
         {
           "type": "character",
-          "attributes": {
-            "names": {
-              "type": "character",
-              "attributes": {},
-              "value": ["sentimentr", "renv", "reproducibleRchunks"]
-            }
-          },
-          "value": ["sentimentr", "renv", "reproducibleRchunks"]
-        },
-        {
-          "type": "character",
           "attributes": {},
-          "value": ["cf15a4a82f423611d50baa255b3e0469cab530fa4f40ebd6d4afac466ef7187f"]
+          "value": ["a3d4a48637012afb91fa5e0d386eda80a1dd5f4d0063b68ec4894b86611d3666"]
         }
       ]
     },
@@ -171,14 +160,19 @@
         "names": {
           "type": "character",
           "attributes": {},
-          "value": ["snt", "txt"]
+          "value": [".Random.seed", "snt", "txt"]
         }
       },
       "value": [
         {
           "type": "character",
           "attributes": {},
-          "value": ["85444e255e9b1a669df877307c9348243d7f2e0056a79302f98d72c3b6e12082"]
+          "value": ["5869d9a61f064985ed094cd422d26780216a2908a36bc3f6ed4dc1079a65a900"]
+        },
+        {
+          "type": "character",
+          "attributes": {},
+          "value": ["ca3bbe0cbec4c74a394a4fad8ef4d585392565d93ab7ac74630a77450da6ae42"]
         },
         {
           "type": "character",
