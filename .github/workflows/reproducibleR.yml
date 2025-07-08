@@ -10,6 +10,8 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    container:
+      image: rocker/verse:latest  # Contains R + RStudio + tidyverse + rmarkdown
     steps:
       - uses: actions/checkout@v3
       - name: Check if last commit was from github-actions bot
@@ -20,15 +22,13 @@ jobs:
            echo "Commit made by github-actions bot. Exiting."
            exit 0
           fi
-      - uses: r-lib/actions/setup-r@v2
-      - uses: r-lib/actions/setup-pandoc@v2
       - name: Install reproducibleRchunks
         run: R -e "install.packages(c(\"reproducibleRchunks\", \"renv\"))"
       - name: Run reproducibility checks
         run: |
           Rscript - <<'EOF'
           library(reproducibleRchunks)
-          renv::restore(confirm=FALSE)
+          renv::restore()
           files <- list.files(pattern = '\\.[Rr]md$', recursive = TRUE)
           success <- all(sapply(files, isReproducible))
           if (success) {
