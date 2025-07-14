@@ -17,6 +17,12 @@ jobs:
         run: Rscript -e "install.packages(c(\"reproducibleRchunks\", \"remotes\", \"renv\"))"
 #      - name: Install reproducibleRchunks from github
 #        run: Rscript -e "remotes::install_github('brandmaier/reproducibleRchunks')"
+      - name: Install reproducibleRchunks from github
+        run: |
+          Sys.setenv(GITHUB_PAT = Sys.getenv("GITHUB_TOKEN"))
+          remotes::install_github("brandmaier/reproducibleRchunks")
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v4
       - name: Check if last commit was from github-actions bot
         run: |
