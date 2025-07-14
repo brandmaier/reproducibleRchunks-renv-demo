@@ -11,7 +11,13 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: r-lib/actions/setup-r@v2
+      - uses: r-lib/actions/setup-pandoc@v2
+      - name: Install packages
+        run: Rscript -e "install.packages(c(\"reproducibleRchunks\", \"remotes\", \"renv\"))"
+      - name: Install reproducibleRchunks from github
+        run: Rscript -e "remotes::install_github('brandmaier/reproducibleRchunks')"
+      - uses: actions/checkout@v4
       - name: Check if last commit was from github-actions bot
         run: |
           AUTHOR=$(git log -1 --pretty=format:'%an')
@@ -20,12 +26,6 @@ jobs:
            echo "Commit made by github-actions bot. Exiting."
            exit 0
           fi
-      - uses: r-lib/actions/setup-r@v2
-      - uses: r-lib/actions/setup-pandoc@v2
-      - name: Install packages
-        run: R -e "install.packages(c(\"reproducibleRchunks\", \"remotes\", \"renv\"))"
-      - name: Install reproducibleRchunks from github
-        run: R -e "remotes::install_github('brandmaier/reproducibleRchunks')"
       - name: Run reproducibility checks
         run: |
           Rscript - <<'EOF'
