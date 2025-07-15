@@ -19,8 +19,10 @@ jobs:
 #        run: Rscript -e "remotes::install_github('brandmaier/reproducibleRchunks')"
       - name: Install reproducibleRchunks from github
         run: |
-          Sys.setenv(GITHUB_PAT = Sys.getenv("GITHUB_TOKEN"))
-          remotes::install_github("brandmaier/reproducibleRchunks")
+          Rscript - <<'EOF'
+          Sys.setenv(GITHUB_PAT = Sys.getenv('GITHUB_TOKEN'))
+          remotes::install_github('brandmaier/reproducibleRchunks')
+          EOF
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v4
