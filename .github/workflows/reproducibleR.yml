@@ -10,11 +10,11 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    container:
+        image: rocker/verse:latest
     steps:
-      - uses: r-lib/actions/setup-r@v2
-      - uses: r-lib/actions/setup-pandoc@v2
       - name: Install packages
-        run: Rscript -e "install.packages(c(\"reproducibleRchunks\", \"remotes\", \"renv\"))"
+        run: Rscript -e "install.packages(c(\"reproducibleRchunks\", \"renv\"))"
 #      - name: Install reproducibleRchunks from github
 #        run: Rscript -e "remotes::install_github('brandmaier/reproducibleRchunks')"
 #      - name: Install reproducibleRchunks from github
