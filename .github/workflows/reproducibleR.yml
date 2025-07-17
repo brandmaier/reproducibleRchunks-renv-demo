@@ -38,8 +38,9 @@ jobs:
         run: |
           Rscript - <<'EOF'
           renv::restore()
-          install.packages(c("reproducibleRchunks","thematic"))
-          library(reproducibleRchunks)
+          #install.packages(c("reproducibleRchunks","thematic"))
+          #library(reproducibleRchunks)
+          source("isReproducible.R")
           files <- list.files(pattern = '\\.[Rr]md$', recursive = TRUE)
           success <- all(sapply(files, isReproducible))
           if (is.na(success)) {
