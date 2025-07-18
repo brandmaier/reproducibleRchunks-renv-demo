@@ -39,6 +39,7 @@ jobs:
         run: |
           Rscript - <<'EOF'
           renv::restore()
+          install.packages(c("thematic","shiny"))
           install.packages("reproducibleRchunks_1.2.0.tar.gz", repos = NULL, type = "source")
           EOF
       - name: Run reproducibility checks
