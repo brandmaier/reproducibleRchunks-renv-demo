@@ -35,13 +35,17 @@ jobs:
            echo "Commit made by github-actions bot. Exiting."
            exit 0
           fi
+      - name: Installation within renv
+        run: |
+          Rscript - <<'EOF'
+          renv::restore()
+          install.packages("reproducibleRchunks_1.2.0.tar.gz", repos = NULL, type = "source")
+          EOF
       - name: Run reproducibility checks
         run: |
           Rscript - <<'EOF'
           renv::restore()
-          #install.packages(c("reproducibleRchunks","thematic"))
-          #library(reproducibleRchunks)
-          source("isReproducible.R")
+          library(reproducibleRchunks)
           files <- list.files(pattern = '\\.[Rr]md$', recursive = TRUE)
           success <- all(sapply(files, isReproducible))
           if (is.na(success)) {
