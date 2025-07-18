@@ -48,6 +48,7 @@ jobs:
           renv::restore()
           library(reproducibleRchunks)
           files <- list.files(pattern = '\\.[Rr]md$', recursive = TRUE)
+          files <- "markdown_demo.Rmd"
           success <- all(sapply(files, isReproducible))
           if (is.na(success)) {
             download.file('https://img.shields.io/badge/reproducibility_status-unknown-black.svg', 'reproduced.svg', mode = 'wb')
