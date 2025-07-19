@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check if last commit was from github-actions bot
         run: |
-          git config --global --add safe.directory /__w/${{GITHUB_REPOSITORY}}/${{GITHUB_REPOSITORY}}
+          git config --global --add safe.directory /__w/${{github.repository}}/${{github.repository}}
           AUTHOR=$(git log -1 --pretty=format:'%an')
           echo "Last commit author: $AUTHOR"
           if [ "$AUTHOR" = "github-actions[bot]" ]; then
