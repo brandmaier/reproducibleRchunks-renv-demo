@@ -28,8 +28,9 @@ jobs:
       - name: Run reproducibility checks
         run: |
           Rscript - <<'EOF'
-          library(reproducibleRchunks)
+          renv::status()
           renv::restore()
+          library(reproducibleRchunks)
           files <- c("markdown_demo.Rmd")
           success <- all(sapply(files, isReproducible))
           if (is.na(success)) {
