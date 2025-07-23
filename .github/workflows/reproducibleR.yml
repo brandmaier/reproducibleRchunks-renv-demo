@@ -14,7 +14,7 @@ jobs:
       image: rocker/verse:latest  # Contains R + RStudio + tidyverse + rmarkdown
     steps:
       - name: Install packages
-        run: R -e "install.packages(c(\"reproducibleRchunks\", \"renv\"))"
+        run: R -e "install.packages(c(\"reproducibleRchunks\", \"ggplot2\", \"MASS\"))"
       - uses: actions/checkout@v4
       - name: Check if last commit was from github-actions bot
         run: |
@@ -29,7 +29,7 @@ jobs:
         run: |
           Rscript - <<'EOF'
           library(reproducibleRchunks)
-          renv::restore()
+
           files <- c("markdown_demo.Rmd")
           success <- all(sapply(files, isReproducible))
           if (is.na(success)) {
